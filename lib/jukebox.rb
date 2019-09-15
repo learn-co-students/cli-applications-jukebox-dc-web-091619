@@ -35,7 +35,7 @@ def play(songs)
   input=gets.strip
   if songs.any?input
     puts "Playing #{input}"
-  elsif input.to_i > 0 && input.to_i < songs.length
+  elsif input.to_i > 0 && input.to_i <= songs.length
     puts "Playing #{songs[input.to_i-1]}"
   else
     puts "Invalid input, please try again"
@@ -63,7 +63,7 @@ def exit_jukebox
 end
 
 ####
-
+=begin
 def run(songs)
   puts "Please enter a command:"
   input=gets.strip
@@ -78,5 +78,29 @@ def run(songs)
       return exit_jukebox
   end
 end
+=end
+
+def run(songs)
+  while true do
+    puts "Please enter a command:"
+    response = gets.chomp
+    case response
+    when "exit"
+      exit_jukebox
+      break
+    when "play"
+      play(songs)
+    when "help"
+      help
+    when "list"
+      list(songs)
+    else
+      puts "Invalid entry"
+    end
+  end
+end
+
+
+
 
 
